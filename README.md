@@ -38,9 +38,8 @@ Settings -> Resources -> File Sharing -> Add your host file directory
 docker-compose build && docker-compose up -d
 ```
 
-Your can then access the database server on [localhost:3306](http://localhost:3306)
-you can access database using phpmyadmin using the url [localhost:8184](http://localhost:8184)
-
-Server : host.docker.internal
-User : root
-Password : root
+- Your can then access the database server on [localhost:3306](http://localhost:3306)
+- you can access database using phpmyadmin using the url [localhost:8184](http://localhost:8184)
+- Server : host.docker.internal
+- User : root
+- Password : root
