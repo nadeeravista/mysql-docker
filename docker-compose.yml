@@ -1,0 +1,36 @@
+version: '3'
+networks:
+  mysql:
+services:
+  mysql:
+    image: mysql:5.7.22
+    container_name: mysql-server
+    tty: true
+    ports:
+      - "3306:3306"
+    volumes: 
+      - ./data/mysql:/var/lib/mysql
+    environment: 
+      MYSQL_DATABASE: test
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      SERVICE_TAG: dev
+      SERVICE_NAME: mysql
+    networks:
+      - mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    links:
+      - mysql
+    environment:
+      PMA_HOST: host.docker.internal
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8184:80
+    networks:
+      - mysql
